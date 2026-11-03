@@ -8,7 +8,6 @@ import { loginWithCredentials, loginWithGitHub } from "@/actions/auth";
 interface LoginFormProps {
   callbackUrl: string;
   initialError?: string;
-  isGitHubConfigured?: boolean;
 }
 
 const ERROR_MESSAGES: Record<string, string> = {
@@ -26,7 +25,6 @@ const ERROR_MESSAGES: Record<string, string> = {
 export default function LoginForm({
   callbackUrl,
   initialError,
-  isGitHubConfigured = false,
 }: LoginFormProps) {
   const [state, formAction, isPending] = useActionState(loginWithCredentials, {
     ok: true,
@@ -56,10 +54,9 @@ export default function LoginForm({
       : "");
 
   return (
-    <div className="w-full max-w-[480px] mx-auto">
-      {/* Modern Administrative Auth Card */}
-      <div className="bg-white rounded-3xl border border-slate-200/90 shadow-[0_8px_30px_rgb(0,0,0,0.06)] p-8 sm:p-10 space-y-6">
-        {/* Brand Header with Official PTIT Logo */}
+    <div className="w-full max-w-[460px] mx-auto">
+      <div className="bg-white rounded-3xl border border-slate-200 shadow-[0_8px_30px_rgb(0,0,0,0.06)] p-8 sm:p-10 space-y-6">
+        {/* Logo & Tiêu đề ngắn gọn */}
         <div className="text-center space-y-3">
           <Link
             href="/"
@@ -77,76 +74,56 @@ export default function LoginForm({
               />
             </div>
           </Link>
+
           <div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">
-              Đăng nhập Hệ thống
+            <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-slate-900">
+              Đăng nhập
             </h1>
-            <p className="text-xs sm:text-sm text-slate-500 mt-1 font-medium">
-              Cổng thông tin Deadline Học vụ • Học viện Công nghệ Bưu chính Viễn
-              thông
+            <p className="text-sm text-slate-500 mt-1 font-medium">
+              Cổng học vụ sinh viên PTIT
             </p>
           </div>
         </div>
 
-        {/* 1-Click Test Account Quick Fill (Chấm điểm Buổi 8) */}
-        <div className="bg-slate-50/80 border border-slate-200/80 rounded-2xl p-3.5 space-y-2.5">
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-slate-700 uppercase tracking-wider">
-              Tài khoản mẫu kiểm thử:
-            </span>
-          </div>
-          <div className="grid grid-cols-2 gap-2.5">
+        {/* Nút chọn nhanh tài khoản kiểm thử */}
+        <div className="bg-slate-50 border border-slate-200 rounded-2xl p-3.5 space-y-2">
+          <span className="text-xs font-bold text-slate-600 block">
+            Chọn nhanh tài khoản:
+          </span>
+          <div className="grid grid-cols-2 gap-2">
             <button
               type="button"
               onClick={fillAdmin}
-              className={`flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl text-xs sm:text-sm font-semibold transition-all border ${
+              className={`flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold transition-all border cursor-pointer ${
                 activePreset === "admin"
                   ? "bg-slate-900 text-white border-slate-900 shadow-xs"
-                  : "bg-white text-slate-700 border-slate-200 hover:bg-slate-50 hover:border-slate-300"
+                  : "bg-white text-slate-700 border-slate-200 hover:bg-slate-100"
               }`}
             >
-              <svg
-                className={`w-4 h-4 ${activePreset === "admin" ? "text-rose-400" : "text-rose-600"}`}
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              <span>Lớp trưởng</span>
+              <span>Ban cán sự</span>
             </button>
             <button
               type="button"
               onClick={fillSv}
-              className={`flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl text-xs sm:text-sm font-semibold transition-all border ${
+              className={`flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold transition-all border cursor-pointer ${
                 activePreset === "sv"
                   ? "bg-slate-900 text-white border-slate-900 shadow-xs"
-                  : "bg-white text-slate-700 border-slate-200 hover:bg-slate-50 hover:border-slate-300"
+                  : "bg-white text-slate-700 border-slate-200 hover:bg-slate-100"
               }`}
             >
-              <svg
-                className={`w-4 h-4 ${activePreset === "sv" ? "text-blue-400" : "text-blue-600"}`}
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a10.973 10.973 0 00-.75 4.949V15a1 1 0 001 1h8a1 1 0 001-1v-2a1 1 0 00-1-1h-.25a9.002 9.002 0 01-.75-4.949l2.644-1.133a1 1 0 000-1.84l-7-3zM8 15v-1a1 1 0 011-1h2a1 1 0 011 1v1H8z" />
-              </svg>
               <span>Sinh viên</span>
             </button>
           </div>
         </div>
 
-        {/* Thông báo lỗi */}
+        {/* Thông báo lỗi nếu có */}
         {displayError && (
           <div
             role="alert"
-            className="p-3.5 text-xs sm:text-sm text-rose-700 bg-rose-50 rounded-xl border border-rose-200/80 flex items-start gap-2.5 leading-relaxed"
+            className="p-3.5 text-xs sm:text-sm text-red-700 bg-red-50 rounded-xl border border-red-200 flex items-start gap-2.5 leading-relaxed"
           >
             <svg
-              className="w-5 h-5 shrink-0 text-rose-600 mt-0.5"
+              className="w-5 h-5 shrink-0 text-red-600 mt-0.5"
               fill="currentColor"
               viewBox="0 0 20 20"
             >
@@ -160,16 +137,16 @@ export default function LoginForm({
           </div>
         )}
 
-        {/* Form đăng nhập */}
+        {/* Form nhập tài khoản */}
         <form action={formAction} className="space-y-4">
           <input type="hidden" name="callbackUrl" value={callbackUrl} />
 
           <div className="space-y-1.5">
             <label
               htmlFor="email"
-              className="block text-xs sm:text-sm font-semibold text-slate-700"
+              className="block text-sm font-bold text-slate-800"
             >
-              Email tài khoản <span className="text-red-500">*</span>
+              Email
             </label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
@@ -196,11 +173,11 @@ export default function LoginForm({
                   setEmail(e.target.value);
                   setActivePreset(null);
                 }}
-                placeholder="admin@ptit.edu.vn hoặc sv@ptit.edu.vn"
+                placeholder="Nhập email..."
                 required
                 autoComplete="email"
                 spellCheck={false}
-                className="w-full h-12 pl-10 pr-4 text-sm bg-white border border-slate-200 rounded-xl outline-none focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10 transition-all text-slate-900 placeholder:text-slate-400 font-sans shadow-2xs"
+                className="w-full h-12 pl-10 pr-4 text-base bg-white border border-slate-300 rounded-xl outline-none focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10 transition-all text-slate-900 placeholder:text-slate-400 font-sans shadow-2xs"
               />
             </div>
           </div>
@@ -208,9 +185,9 @@ export default function LoginForm({
           <div className="space-y-1.5">
             <label
               htmlFor="password"
-              className="block text-xs sm:text-sm font-semibold text-slate-700"
+              className="block text-sm font-bold text-slate-800"
             >
-              Mật khẩu <span className="text-red-500">*</span>
+              Mật khẩu
             </label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
@@ -240,7 +217,7 @@ export default function LoginForm({
                 placeholder="••••••••"
                 required
                 autoComplete="current-password"
-                className="w-full h-12 pl-10 pr-4 text-sm bg-white border border-slate-200 rounded-xl outline-none focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10 transition-all text-slate-900 placeholder:text-slate-400 font-sans shadow-2xs"
+                className="w-full h-12 pl-10 pr-4 text-base bg-white border border-slate-300 rounded-xl outline-none focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10 transition-all text-slate-900 placeholder:text-slate-400 font-sans shadow-2xs"
               />
             </div>
           </div>
@@ -248,7 +225,7 @@ export default function LoginForm({
           <button
             type="submit"
             disabled={isPending}
-            className="w-full h-12 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl text-sm shadow-xs hover:shadow transition-all disabled:opacity-60 flex items-center justify-center gap-2 active:scale-[0.99] cursor-pointer"
+            className="w-full h-12 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl text-base shadow-xs hover:shadow transition-all disabled:opacity-60 flex items-center justify-center gap-2 active:scale-[0.99] cursor-pointer"
           >
             {isPending ? (
               <>
@@ -256,26 +233,26 @@ export default function LoginForm({
                 <span>Đang xác thực…</span>
               </>
             ) : (
-              <span>Đăng nhập hệ thống</span>
+              <span>Đăng nhập</span>
             )}
           </button>
         </form>
 
-        {/* Divider */}
+        {/* Phân cách tối giản */}
         <div className="relative flex items-center justify-center">
           <div className="border-t border-slate-200 w-full" />
-          <span className="bg-white px-3 text-[11px] text-slate-400 uppercase tracking-wider font-semibold absolute">
-            hoặc tiếp tục với
+          <span className="bg-white px-3 text-xs text-slate-400 uppercase tracking-wider font-semibold absolute">
+            hoặc
           </span>
         </div>
 
-        {/* GitHub OAuth Button */}
+        {/* Nút đăng nhập GitHub gọn gàng */}
         <div>
           <form action={loginWithGitHub}>
             <input type="hidden" name="callbackUrl" value={callbackUrl} />
             <button
               type="submit"
-              className="w-full h-12 inline-flex items-center justify-center gap-2.5 border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-sm font-semibold rounded-xl shadow-2xs hover:border-slate-300 transition-all active:scale-[0.99] cursor-pointer"
+              className="w-full h-12 inline-flex items-center justify-center gap-2.5 border border-slate-300 bg-white hover:bg-slate-50 text-slate-800 text-sm sm:text-base font-bold rounded-xl shadow-2xs hover:border-slate-400 transition-all active:scale-[0.99] cursor-pointer"
             >
               <svg
                 className="w-4 h-4 text-slate-900"
@@ -289,21 +266,18 @@ export default function LoginForm({
                 />
               </svg>
               <span>Đăng nhập bằng GitHub</span>
-              <span className="text-[10px] text-slate-500 font-normal">
-                {isGitHubConfigured ? "(OAuth)" : "(Dự phòng)"}
-              </span>
             </button>
           </form>
         </div>
 
-        {/* Back Link */}
+        {/* Nút quay lại trang chủ ngắn gọn */}
         <div className="pt-2 text-center">
           <Link
             href="/"
-            className="text-xs sm:text-sm font-semibold text-slate-500 hover:text-slate-900 transition-colors inline-flex items-center gap-1.5"
+            className="text-sm font-bold text-slate-500 hover:text-slate-900 transition-colors inline-flex items-center gap-1.5"
           >
             <span>&larr;</span>
-            <span>Quay lại trang chủ công khai</span>
+            <span>Quay lại trang chủ</span>
           </Link>
         </div>
       </div>
