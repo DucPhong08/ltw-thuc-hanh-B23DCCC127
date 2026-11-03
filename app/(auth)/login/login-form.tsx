@@ -94,9 +94,6 @@ export default function LoginForm({
             <span className="text-xs font-bold text-slate-700 uppercase tracking-wider">
               Tài khoản mẫu kiểm thử:
             </span>
-            <span className="text-[11px] text-slate-400 font-mono">
-              1-Click điền
-            </span>
           </div>
           <div className="grid grid-cols-2 gap-2.5">
             <button
@@ -119,7 +116,7 @@ export default function LoginForm({
                   clipRule="evenodd"
                 />
               </svg>
-              <span>Lớp trưởng (Admin)</span>
+              <span>Lớp trưởng</span>
             </button>
             <button
               type="button"
@@ -137,7 +134,7 @@ export default function LoginForm({
               >
                 <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a10.973 10.973 0 00-.75 4.949V15a1 1 0 001 1h8a1 1 0 001-1v-2a1 1 0 00-1-1h-.25a9.002 9.002 0 01-.75-4.949l2.644-1.133a1 1 0 000-1.84l-7-3zM8 15v-1a1 1 0 011-1h2a1 1 0 011 1v1H8z" />
               </svg>
-              <span>Sinh viên (User)</span>
+              <span>Sinh viên</span>
             </button>
           </div>
         </div>
@@ -292,7 +289,9 @@ export default function LoginForm({
                 />
               </svg>
               <span>Đăng nhập bằng GitHub</span>
-              <span className="text-[10px] text-slate-500 font-normal"></span>
+              <span className="text-[10px] text-slate-500 font-normal">
+                {isGitHubConfigured ? "(OAuth)" : "(Dự phòng)"}
+              </span>
             </button>
           </form>
         </div>
