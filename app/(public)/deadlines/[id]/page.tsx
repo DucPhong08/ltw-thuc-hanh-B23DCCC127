@@ -76,14 +76,14 @@ export default async function DeadlineDetailPage({
       {/* Schema JSON-LD BreadcrumbList cho SEO */}
       <JsonLdBreadcrumb items={breadcrumbItems} />
 
-      {/* Modern Breadcrumb */}
+      {/* Breadcrumb Định hướng Thân thiện */}
       <nav
         aria-label="Breadcrumb"
-        className="text-xs sm:text-sm text-slate-500 flex flex-wrap items-center gap-2.5"
+        className="text-sm font-semibold text-slate-500 flex flex-wrap items-center gap-2.5"
       >
         <Link
           href="/"
-          className="hover:text-slate-900 transition-colors flex items-center gap-1.5 font-medium"
+          className="hover:text-slate-900 transition-colors flex items-center gap-1.5"
         >
           <svg
             className="w-4 h-4"
@@ -103,51 +103,68 @@ export default async function DeadlineDetailPage({
         <span className="text-slate-300">/</span>
         <Link
           href="/deadlines"
-          className="hover:text-slate-900 transition-colors font-medium"
+          className="hover:text-slate-900 transition-colors"
         >
           Sổ Deadline
         </Link>
         <span className="text-slate-300">/</span>
         <Link
           href={`/subjects/${deadline.subjectSlug}`}
-          className="hover:text-slate-900 transition-colors font-medium"
+          className="hover:text-slate-900 transition-colors"
         >
           {deadline.subjectName}
         </Link>
         <span className="text-slate-300">/</span>
-        <span className="text-slate-800 font-bold truncate max-w-xs font-mono">
+        <span className="text-slate-900 font-bold truncate max-w-xs font-mono">
           #{deadline.id}
         </span>
       </nav>
 
-      {/* Modern Administrative Card */}
-      <div className="bg-white rounded-3xl border border-slate-200/80 p-8 sm:p-12 shadow-xs space-y-8">
-        <div className="border-b border-slate-100 pb-6">
-          <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
-            <span className="text-xs sm:text-sm font-mono font-bold uppercase tracking-wider text-slate-800 bg-slate-100 border border-slate-200/80 px-3 py-1 rounded-lg">
-              MÃ BÀI TẬP #{deadline.id}
-            </span>
-            <span className="text-sm sm:text-base text-slate-600 font-medium">
-              Học phần:{" "}
-              <strong className="text-slate-900">{deadline.subjectName}</strong>
-            </span>
+      {/* HỒ SƠ HỌC VỤ CHÍNH THỨC (OFFICIAL ACADEMIC DOSSIER) */}
+      <div className="bg-white rounded-3xl border border-slate-200 p-8 sm:p-12 shadow-xs space-y-8">
+        {/* Header Hồ Sơ */}
+        <div className="border-b border-slate-200 pb-8 space-y-4">
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <span className="text-xs sm:text-sm font-mono font-bold uppercase tracking-wider text-slate-800 bg-slate-100 border border-slate-200 px-3.5 py-1.5 rounded-lg">
+                HỒ SƠ HỌC VỤ #{deadline.id}
+              </span>
+              <span className="text-sm font-bold text-slate-600">
+                Môn: <strong className="text-slate-900">{deadline.subjectName}</strong>
+              </span>
+            </div>
+
+            <div className="flex items-center gap-2">
+              {deadline.priority === "high" ? (
+                <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-red-700 bg-red-50 border border-red-200 px-3.5 py-1.5 rounded-full">
+                  <svg className="w-4 h-4 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 00-1 1v3a1 1 0 11-2 0V6z" clipRule="evenodd" />
+                  </svg>
+                  <span>Ưu tiên cao (Bắt buộc)</span>
+                </span>
+              ) : (
+                <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-slate-700 bg-slate-100 border border-slate-200 px-3.5 py-1.5 rounded-full">
+                  <span>Mức độ thường</span>
+                </span>
+              )}
+            </div>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight mb-5 leading-tight">
+          <h1 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight">
             {deadline.title}
           </h1>
 
           <div className="flex flex-wrap items-center justify-between gap-4 pt-2">
             <div className="flex items-center gap-3">
               <Countdown dueDate={deadline.dueDate} />
-              <span className="text-xs font-bold text-slate-700 uppercase bg-slate-100 px-3 py-1 rounded-full border border-slate-200">
-                Mức độ: {deadline.priority}
+              <span className="text-xs sm:text-sm font-semibold text-slate-500">
+                Học kỳ I • Năm học 2026 – 2027
               </span>
             </div>
 
             <Suspense
               fallback={
-                <div className="h-10 w-32 bg-slate-100 rounded-xl animate-pulse" />
+                <div className="h-11 w-36 bg-slate-100 rounded-xl animate-pulse" />
               }
             >
               <DeadlineDetailAction deadlineId={deadline.id} />
@@ -155,53 +172,96 @@ export default async function DeadlineDetailPage({
           </div>
         </div>
 
-        {/* 3 Thông số thời hạn */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 bg-slate-50/80 p-6 sm:p-8 rounded-2xl border border-slate-200/80 text-sm">
-          <div>
-            <span className="text-slate-500 text-xs block uppercase font-bold tracking-wider">
-              Hạn chót nộp bài:
+        {/* 4 Chỉ số Hành chính */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-1">
+            <span className="text-xs text-slate-500 uppercase font-bold tracking-wider block">
+              Hạn chót nộp bài
             </span>
-            <strong className="text-slate-900 text-base sm:text-lg block mt-1 font-bold">
-              {new Date(deadline.dueDate).toLocaleString("vi-VN", {
-                dateStyle: "full",
-                timeStyle: "short",
-              })}
+            <strong className="text-slate-900 text-base sm:text-lg font-black block">
+              {new Date(deadline.dueDate).toLocaleDateString("vi-VN")}
             </strong>
+            <span className="text-xs font-mono font-bold text-slate-500 block">
+              {new Date(deadline.dueDate).toLocaleTimeString("vi-VN", {
+                hour: "2-digit",
+                minute: "2-digit",
+              })} (UTC+7)
+            </span>
           </div>
 
-          <div>
-            <span className="text-slate-500 text-xs block uppercase font-bold tracking-wider">
-              Ngày ban hành:
+          <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-1">
+            <span className="text-xs text-slate-500 uppercase font-bold tracking-wider block">
+              Hình thức nghiệm thu
             </span>
-            <strong className="text-slate-900 text-base sm:text-lg block mt-1 font-bold">
-              {new Date(deadline.createdAt).toLocaleDateString("vi-VN")}
+            <strong className="text-slate-900 text-base sm:text-lg font-black block">
+              Nộp trực tuyến
             </strong>
+            <span className="text-xs text-slate-600 font-medium block">
+              Lưu timestamp máy chủ
+            </span>
           </div>
 
-          <div>
-            <span className="text-slate-500 text-xs block uppercase font-bold tracking-wider">
-              Bộ môn phụ trách:
+          <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-1">
+            <span className="text-xs text-slate-500 uppercase font-bold tracking-wider block">
+              Chuẩn định dạng file
             </span>
-            <strong className="text-slate-900 text-base sm:text-lg block mt-1 font-bold">
-              Khoa CNTT — {deadline.subjectName}
+            <strong className="text-slate-900 text-base sm:text-lg font-mono font-bold block">
+              .ZIP / .PDF
             </strong>
+            <span className="text-xs text-slate-600 font-medium block">
+              [MãSV]_[MãMôn]_[TênBài]
+            </span>
+          </div>
+
+          <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-1">
+            <span className="text-xs text-red-700 uppercase font-bold tracking-wider block">
+              Trọng số đánh giá
+            </span>
+            <strong className="text-red-700 text-base sm:text-lg font-black block">
+              {deadline.priority === "high" ? "20% - 30%" : "10% - 15%"}
+            </strong>
+            <span className="text-xs text-slate-600 font-medium block">
+              Điểm thành phần quá trình
+            </span>
           </div>
         </div>
 
-        {/* Nội dung chi tiết */}
-        <div className="space-y-3">
-          <h2 className="text-sm font-bold uppercase tracking-wider text-slate-700">
-            Nội dung yêu cầu bài tập & Quy chuẩn nghiệm thu
-          </h2>
-          <div className="text-base text-slate-700 leading-relaxed bg-white p-6 sm:p-8 rounded-2xl border border-slate-200/80 whitespace-pre-line font-sans">
+        {/* Nội dung chi tiết & Yêu cầu kỹ thuật */}
+        <div className="space-y-4">
+          <div className="flex items-center gap-2 border-b border-slate-200 pb-3">
+            <span className="w-2.5 h-2.5 rounded-full bg-red-600" />
+            <h2 className="text-base sm:text-lg font-bold uppercase tracking-wider text-slate-800">
+              Yêu cầu nhiệm vụ & Tiêu chuẩn nghiệm thu
+            </h2>
+          </div>
+          <div className="text-base sm:text-lg text-slate-700 leading-relaxed bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 whitespace-pre-line font-sans">
             {deadline.description}
           </div>
         </div>
 
-        <div className="pt-6 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4 text-sm font-bold">
+        {/* Khung Quy định nộp bài & Xử lý trễ hạn */}
+        <div className="bg-slate-50 rounded-2xl border border-slate-200 p-6 sm:p-8 space-y-3">
+          <h3 className="text-sm sm:text-base font-bold uppercase tracking-wider text-slate-800">
+            Quy định nộp bài & Chính sách thời gian ân hạn
+          </h3>
+          <ul className="text-sm sm:text-base text-slate-600 space-y-2 list-disc list-inside leading-relaxed">
+            <li>
+              <strong>Nộp trước 23:59 ngày quy định:</strong> Hệ thống tự động ghi nhận đạt chuẩn 100% thời hạn.
+            </li>
+            <li>
+              <strong>Thời gian ân hạn (trễ dưới 24h):</strong> Hệ thống cho phép nộp bù nhưng áp dụng trừ 10% điểm quá trình theo Quy định đào tạo số 482/HVBCVT.
+            </li>
+            <li>
+              <strong>Quá hạn trên 48h:</strong> Cổng nộp bài trực tuyến tự động đóng; sinh viên phải làm đơn giải trình có xác nhận của Cố vấn học tập hoặc Giảng viên phụ trách.
+            </li>
+          </ul>
+        </div>
+
+        {/* Điều hướng chân trang */}
+        <div className="pt-6 border-t border-slate-200 flex flex-wrap items-center justify-between gap-4 text-base font-bold">
           <Link
             href="/deadlines"
-            className="text-slate-600 hover:text-slate-900 transition-colors inline-flex items-center gap-1.5"
+            className="text-slate-700 hover:text-red-700 transition-colors inline-flex items-center gap-2"
           >
             <span>&larr;</span>
             <span>Quay lại sổ theo dõi Deadline</span>
@@ -209,7 +269,7 @@ export default async function DeadlineDetailPage({
 
           <Link
             href={`/subjects/${deadline.subjectSlug}`}
-            className="text-slate-600 hover:text-slate-900 transition-colors inline-flex items-center gap-1.5"
+            className="text-red-700 hover:text-red-800 transition-colors inline-flex items-center gap-2"
           >
             <span>Xem tất cả bài tập môn {deadline.subjectName}</span>
             <span>&rarr;</span>

@@ -19,8 +19,27 @@ export default async function AppGroupLayout({
 
   return (
     <div className="min-h-screen flex flex-col bg-[#f8fafc] text-slate-900">
+      {/* Dải Thông Tin Thể Thức Hành Chính Đầu Trang */}
+      <div className="bg-slate-900 text-slate-300 text-xs py-2 border-b border-slate-800">
+        <div className="max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 flex flex-col sm:flex-row items-center justify-between gap-2">
+          <div className="flex items-center gap-2.5">
+            <span className="w-2 h-2 rounded-full bg-red-600" />
+            <span className="font-bold text-white tracking-wide uppercase text-[11px] sm:text-xs">
+              Học viện Công nghệ Bưu chính Viễn thông
+            </span>
+            <span className="text-slate-500 hidden sm:inline">•</span>
+            <span className="text-slate-400 hidden sm:inline text-xs">Khoa Công nghệ Thông tin</span>
+          </div>
+          <div className="flex items-center gap-3 text-slate-400 text-xs">
+            <span>Cổng Học Vụ Chính Quy • Học kỳ I (2026 – 2027)</span>
+            <span className="text-slate-600 hidden md:inline">|</span>
+            <span className="hidden md:inline font-mono text-slate-300">bcs.cntt@ptit.edu.vn</span>
+          </div>
+        </div>
+      </div>
+
       {/* Modern Administrative Topbar with Official Logo */}
-      <header className="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 shadow-2xs">
+      <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-2xs">
         <div className="max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 h-20 flex items-center justify-between gap-6">
           <div className="flex items-center gap-8">
             <Link href="/" className="flex items-center gap-3.5 group">

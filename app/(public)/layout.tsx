@@ -10,8 +10,27 @@ export default function PublicLayout({
 }) {
   return (
     <div className="flex flex-col min-h-screen bg-[#f8fafc] text-slate-900">
+      {/* Dải Thông Tin Thể Thức Hành Chính Đầu Trang */}
+      <div className="bg-slate-900 text-slate-300 text-xs py-2 border-b border-slate-800">
+        <div className="max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 flex flex-col sm:flex-row items-center justify-between gap-2">
+          <div className="flex items-center gap-2.5">
+            <span className="w-2 h-2 rounded-full bg-red-600" />
+            <span className="font-bold text-white tracking-wide uppercase text-[11px] sm:text-xs">
+              Học viện Công nghệ Bưu chính Viễn thông
+            </span>
+            <span className="text-slate-500 hidden sm:inline">•</span>
+            <span className="text-slate-400 hidden sm:inline text-xs">Khoa Công nghệ Thông tin</span>
+          </div>
+          <div className="flex items-center gap-3 text-slate-400 text-xs">
+            <span>Cổng Học Vụ Chính Quy • Học kỳ I (2026 – 2027)</span>
+            <span className="text-slate-600 hidden md:inline">|</span>
+            <span className="hidden md:inline font-mono text-slate-300">bcs.cntt@ptit.edu.vn</span>
+          </div>
+        </div>
+      </div>
+
       {/* Modern Administrative Header with Glassmorphism — Widescreen Container */}
-      <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/80 shadow-2xs">
+      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-2xs">
         <div className="max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 h-20 flex items-center justify-between gap-6">
           {/* Official PTIT Logo & Portal Identity */}
           <div className="flex items-center gap-10">
@@ -28,58 +47,58 @@ export default function PublicLayout({
               </div>
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="font-extrabold text-slate-900 text-base sm:text-lg leading-tight tracking-tight">
+                  <span className="font-black text-slate-900 text-lg sm:text-xl leading-tight tracking-tight">
                     PTIT Deadline Hub
                   </span>
-                  <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider bg-red-50 text-red-700 px-2.5 py-0.5 rounded-full border border-red-200/70 font-mono">
+                  <span className="text-xs font-bold uppercase tracking-wider bg-red-50 text-red-700 px-2.5 py-0.5 rounded-full border border-red-200 font-mono">
                     Học kỳ I
                   </span>
                 </div>
-                <span className="text-xs text-slate-500 font-medium block">
+                <span className="text-xs sm:text-sm text-slate-500 font-medium block">
                   Học viện Công nghệ Bưu chính Viễn thông
                 </span>
               </div>
             </Link>
 
             {/* Navigation Links — Roomier and more readable */}
-            <nav className="hidden xl:flex items-center gap-1.5 text-sm font-semibold text-slate-600">
+            <nav className="hidden xl:flex items-center gap-2 text-base font-semibold text-slate-700">
               <Link
                 href="/"
-                className="px-3.5 py-2 rounded-xl hover:text-slate-900 hover:bg-slate-100/80 transition-colors"
+                className="px-3.5 py-2 rounded-xl hover:text-slate-900 hover:bg-slate-100 transition-colors"
               >
                 Trang chủ
               </Link>
               <Link
                 href="/deadlines"
-                className="px-3.5 py-2 rounded-xl hover:text-slate-900 hover:bg-slate-100/80 transition-colors flex items-center gap-2"
+                className="px-3.5 py-2 rounded-xl hover:text-slate-900 hover:bg-slate-100 transition-colors flex items-center gap-2"
               >
                 <span>Sổ Deadline</span>
-                <span className="text-[11px] font-mono font-bold bg-slate-100 text-slate-700 px-2 py-0.5 rounded-md border border-slate-200/60">
+                <span className="text-xs font-mono font-bold bg-slate-200 text-slate-800 px-2.5 py-0.5 rounded-md">
                   12
                 </span>
               </Link>
               <div className="h-4 w-px bg-slate-200 mx-2" />
               <Link
                 href="/subjects/ltwnc"
-                className="px-3 py-2 rounded-xl hover:text-slate-900 hover:bg-slate-100/80 transition-colors"
+                className="px-3 py-2 rounded-xl hover:text-slate-900 hover:bg-slate-100 transition-colors"
               >
                 LTW Nâng cao
               </Link>
               <Link
                 href="/subjects/ktmt"
-                className="px-3 py-2 rounded-xl hover:text-slate-900 hover:bg-slate-100/80 transition-colors"
+                className="px-3 py-2 rounded-xl hover:text-slate-900 hover:bg-slate-100 transition-colors"
               >
                 KT Máy tính
               </Link>
               <Link
                 href="/subjects/mmt"
-                className="px-3 py-2 rounded-xl hover:text-slate-900 hover:bg-slate-100/80 transition-colors"
+                className="px-3 py-2 rounded-xl hover:text-slate-900 hover:bg-slate-100 transition-colors"
               >
                 Mạng máy tính
               </Link>
               <Link
                 href="/subjects/csdl"
-                className="px-3 py-2 rounded-xl hover:text-slate-900 hover:bg-slate-100/80 transition-colors"
+                className="px-3 py-2 rounded-xl hover:text-slate-900 hover:bg-slate-100 transition-colors"
               >
                 Cơ sở dữ liệu
               </Link>

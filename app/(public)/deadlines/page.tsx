@@ -21,26 +21,26 @@ export default async function DeadlinesPage() {
   return (
     <div className="space-y-8">
       {/* Spacious Banner Header */}
-      <div className="bg-white p-8 sm:p-10 rounded-3xl border border-slate-200/80 shadow-xs flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-        <div className="space-y-2">
+      <div className="bg-white p-8 sm:p-10 rounded-3xl border border-slate-200 shadow-xs flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+        <div className="space-y-3">
           <div className="flex items-center gap-2.5">
-            <span className="text-xs font-mono font-bold uppercase bg-red-50 text-red-700 border border-red-200/70 px-3 py-1 rounded-md">
-              CƠ CHẾ ISR (60S)
+            <span className="text-xs sm:text-sm font-mono font-bold uppercase bg-red-50 text-red-700 border border-red-200 px-3 py-1 rounded-md">
+              CẬP NHẬT TỰ ĐỘNG ISR (60S)
             </span>
             <span className="text-xs sm:text-sm text-slate-500 font-medium">
-              Cập nhật dữ liệu thời gian thực
+              Đồng bộ dữ liệu thời gian thực
             </span>
           </div>
-          <h1 className="text-2xl sm:text-4xl font-black tracking-tight text-slate-900">
+          <h1 className="text-3xl sm:text-5xl font-black tracking-tight text-slate-900">
             Sổ Theo Dõi Bài Tập & Deadline
           </h1>
-          <p className="text-sm sm:text-base text-slate-500 max-w-3xl leading-relaxed">
+          <p className="text-base sm:text-lg text-slate-600 max-w-3xl leading-relaxed">
             Tổng hợp dữ liệu bài tập và hạn nộp chính thức của tất cả các môn
             học trong kỳ. Tự động cập nhật ngầm sau mỗi 60 giây.
           </p>
         </div>
 
-        <div className="flex items-center gap-3 self-start lg:self-auto text-sm text-slate-600 bg-slate-50 border border-slate-200/80 px-5 py-3 rounded-2xl font-medium shrink-0">
+        <div className="flex items-center gap-3 self-start lg:self-auto text-base text-slate-700 bg-slate-50 border border-slate-200 px-6 py-3.5 rounded-2xl font-semibold shrink-0">
           <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
           <span>
             Tổng số:{" "}

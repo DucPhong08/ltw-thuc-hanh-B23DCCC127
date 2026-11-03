@@ -22,29 +22,29 @@ export default async function AdminPage() {
   return (
     <div className="space-y-8">
       {/* Tiêu đề nghiệp vụ quản trị — Spacious Card */}
-      <div className="bg-white rounded-3xl border border-rose-200/80 p-8 sm:p-10 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+      <div className="bg-white rounded-3xl border border-slate-200 p-8 sm:p-10 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-6">
         <div>
           <div className="flex items-center gap-2.5 mb-2">
-            <span className="text-xs uppercase font-bold bg-rose-50 text-rose-700 border border-rose-200 px-3 py-1 rounded-full font-mono">
-              ĐẶC QUYỀN LỚP TRƯỞNG (SSR)
+            <span className="text-xs uppercase font-bold bg-red-50 text-red-700 border border-red-200 px-3 py-1 rounded-full font-mono">
+              NGHIỆP VỤ BAN CÁN SỰ (ADMIN)
             </span>
             <span className="text-xs sm:text-sm text-slate-500 font-medium">
-              Khu vực quản trị học vụ
+              Khu vực quản lý học vụ chính quy
             </span>
           </div>
           <h1 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
             Quản trị bài tập & Thời hạn học vụ
           </h1>
-          <p className="text-sm text-slate-500 max-w-3xl mt-2 leading-relaxed">
+          <p className="text-sm sm:text-base text-slate-600 max-w-3xl mt-2 leading-relaxed">
             Thêm bài tập mới, điều chỉnh thời hạn hoặc xóa bài tập đã hủy. Thao
-            tác sẽ cập nhật ngay tức thì tới toàn thể sinh viên qua On-Demand
-            ISR.
+            tác sẽ cập nhật ngay tức thì tới toàn thể sinh viên qua cơ chế On-Demand
+            ISR của Next.js App Router.
           </p>
         </div>
 
         <Link
           href="/dashboard"
-          className="text-sm font-bold px-5 py-3 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-2xl transition-colors self-start sm:self-auto shrink-0"
+          className="text-sm sm:text-base font-bold px-6 py-3.5 bg-slate-900 hover:bg-slate-800 text-white rounded-2xl transition-all shadow-xs self-start sm:self-auto shrink-0"
         >
           &larr; Về Dashboard sinh viên
         </Link>
@@ -57,27 +57,27 @@ export default async function AdminPage() {
         </div>
 
         {/* Bảng danh sách bài tập */}
-        <div className="lg:col-span-2 bg-white rounded-3xl border border-slate-200/80 p-7 sm:p-8 shadow-xs space-y-6">
-          <div className="flex items-center justify-between border-b border-slate-100 pb-4">
+        <div className="lg:col-span-2 bg-white rounded-3xl border border-slate-200 p-7 sm:p-8 shadow-xs space-y-6">
+          <div className="flex items-center justify-between border-b border-slate-200 pb-4">
             <div>
-              <h2 className="text-lg sm:text-xl font-bold text-slate-900">
+              <h2 className="text-xl sm:text-2xl font-black text-slate-900">
                 Danh sách bài tập hiện có ({deadlines.length})
               </h2>
-              <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
+              <p className="text-sm text-slate-500 mt-0.5">
                 Hệ thống tự động kích hoạt revalidatePath khi thêm hoặc xóa
               </p>
             </div>
           </div>
 
           <div className="overflow-x-auto">
-            <table className="w-full text-left text-sm">
-              <thead className="bg-slate-50/80 text-slate-500 uppercase font-bold border-b border-slate-200/80 text-xs tracking-wider">
+            <table className="w-full text-left text-base">
+              <thead className="bg-slate-50 text-slate-700 uppercase font-bold border-b border-slate-200 text-xs sm:text-sm tracking-wider">
                 <tr>
-                  <th className="py-3.5 px-4 w-14 text-center font-mono">ID</th>
-                  <th className="py-3.5 px-4 w-44">Học phần</th>
-                  <th className="py-3.5 px-4">Tiêu đề bài tập</th>
-                  <th className="py-3.5 px-4 w-40">Thời hạn</th>
-                  <th className="py-3.5 px-4 w-28 text-right">Thao tác</th>
+                  <th className="py-4 px-4 w-14 text-center font-mono">#</th>
+                  <th className="py-4 px-4 w-44">Học phần</th>
+                  <th className="py-4 px-5">Tiêu đề bài tập</th>
+                  <th className="py-4 px-5 w-44">Thời hạn</th>
+                  <th className="py-4 px-4 w-28 text-right">Thao tác</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
@@ -86,30 +86,45 @@ export default async function AdminPage() {
                     key={item.id}
                     className="hover:bg-slate-50/80 transition-colors"
                   >
-                    <td className="py-4 px-4 text-center font-mono text-slate-400">
+                    <td className="py-4.5 px-4 text-center font-mono text-sm font-bold text-slate-400">
                       #{item.id}
                     </td>
-                    <td className="py-4 px-4 whitespace-nowrap">
-                      <span className="font-bold text-slate-900 block">
+                    <td className="py-4.5 px-4 whitespace-nowrap">
+                      <span className="font-bold text-slate-900 block text-sm sm:text-base">
                         {item.subjectName}
                       </span>
+                      <span className="text-xs font-mono font-bold text-slate-500">
+                        {item.subjectSlug.toUpperCase()}
+                      </span>
                     </td>
-                    <td className="py-4 px-4">
+                    <td className="py-4.5 px-5">
                       <Link
                         href={`/deadlines/${item.id}`}
-                        className="font-bold text-slate-900 hover:text-red-700 transition-colors block line-clamp-1"
+                        className="font-bold text-slate-900 hover:text-red-700 transition-colors block text-base leading-snug line-clamp-1"
                       >
                         {item.title}
                       </Link>
-                      <span className="text-xs text-slate-400 font-mono">
-                        Ưu tiên: {item.priority.toUpperCase()} •{" "}
+                      <div className="flex items-center gap-2 mt-1">
+                        <Countdown dueDate={item.dueDate} />
+                        {item.priority === "high" && (
+                          <span className="text-xs font-bold text-red-700 bg-red-50 px-2 py-0.5 rounded border border-red-200">
+                            Ưu tiên cao
+                          </span>
+                        )}
+                      </div>
+                    </td>
+                    <td className="py-4.5 px-5 whitespace-nowrap text-slate-800">
+                      <span className="font-bold text-sm block">
                         {new Date(item.dueDate).toLocaleDateString("vi-VN")}
                       </span>
+                      <span className="text-xs text-slate-500 font-mono">
+                        {new Date(item.dueDate).toLocaleTimeString("vi-VN", {
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        })}
+                      </span>
                     </td>
-                    <td className="py-4 px-4 whitespace-nowrap">
-                      <Countdown dueDate={item.dueDate} />
-                    </td>
-                    <td className="py-4 px-4 text-right whitespace-nowrap">
+                    <td className="py-4.5 px-4 text-right whitespace-nowrap">
                       <DeleteButton
                         deadlineId={item.id}
                         deadlineTitle={item.title}

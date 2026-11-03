@@ -300,6 +300,82 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* QUY TRÌNH HỌC VỤ 3 BƯỚC — Chuẩn mực, thân thiện, rõ ràng */}
+      <section className="bg-white rounded-3xl border border-slate-200 p-8 sm:p-10 shadow-xs space-y-6">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between border-b border-slate-200 pb-5 gap-3">
+          <div>
+            <div className="flex items-center gap-2 mb-1.5">
+              <span className="w-2.5 h-2.5 rounded-full bg-red-600" />
+              <span className="text-xs sm:text-sm font-mono font-bold uppercase tracking-wider text-red-700">
+                HƯỚNG DẪN THỰC HIỆN NGHĨA VỤ HỌC VỤ
+              </span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+              Quy trình 3 bước hoàn thành & nghiệm thu bài tập
+            </h2>
+          </div>
+          <span className="text-sm text-slate-500 font-medium hidden sm:inline">
+            Căn cứ theo quy chế đào tạo tín chỉ PTIT
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Bước 1 */}
+          <div className="bg-slate-50/70 rounded-2xl border border-slate-200 p-6 space-y-3 relative hover:border-slate-300 transition-colors">
+            <div className="flex items-center justify-between">
+              <span className="w-9 h-9 rounded-xl bg-slate-900 text-white font-mono font-black text-base flex items-center justify-center">
+                01
+              </span>
+              <span className="text-xs font-bold uppercase tracking-wider text-slate-500 font-mono">
+                BƯỚC 1
+              </span>
+            </div>
+            <h3 className="font-bold text-slate-900 text-lg">
+              Tra cứu & Đối chiếu Yêu cầu
+            </h3>
+            <p className="text-sm text-slate-600 leading-relaxed">
+              Truy cập Sổ Deadline chính thức, kiểm tra mốc thời gian, mức độ ưu tiên và tiêu chí nghiệm thu của bài tập thuộc từng học phần.
+            </p>
+          </div>
+
+          {/* Bước 2 */}
+          <div className="bg-slate-50/70 rounded-2xl border border-slate-200 p-6 space-y-3 relative hover:border-slate-300 transition-colors">
+            <div className="flex items-center justify-between">
+              <span className="w-9 h-9 rounded-xl bg-red-700 text-white font-mono font-black text-base flex items-center justify-center">
+                02
+              </span>
+              <span className="text-xs font-bold uppercase tracking-wider text-red-700 font-mono">
+                BƯỚC 2
+              </span>
+            </div>
+            <h3 className="font-bold text-slate-900 text-lg">
+              Đóng gói Bài tập & Đặt tên File
+            </h3>
+            <p className="text-sm text-slate-600 leading-relaxed">
+              Nén mã nguồn sạch dạng <code className="font-mono text-slate-900 font-semibold">.zip</code> hoặc xuất báo cáo định dạng <code className="font-mono text-slate-900 font-semibold">.pdf</code> theo cú pháp quy chuẩn <strong className="text-slate-900 font-semibold">[MãSV]_[MãMôn]_[TênBài]</strong>.
+            </p>
+          </div>
+
+          {/* Bước 3 */}
+          <div className="bg-slate-50/70 rounded-2xl border border-slate-200 p-6 space-y-3 relative hover:border-slate-300 transition-colors">
+            <div className="flex items-center justify-between">
+              <span className="w-9 h-9 rounded-xl bg-emerald-700 text-white font-mono font-black text-base flex items-center justify-center">
+                03
+              </span>
+              <span className="text-xs font-bold uppercase tracking-wider text-emerald-800 font-mono">
+                BƯỚC 3
+              </span>
+            </div>
+            <h3 className="font-bold text-slate-900 text-lg">
+              Xác nhận Hoàn thành & Lưu Timestamp
+            </h3>
+            <p className="text-sm text-slate-600 leading-relaxed">
+              Đăng nhập tài khoản sinh viên, bấm &quot;Đánh dấu hoàn thành&quot; để hệ thống tự động ghi nhận thời gian nộp bài làm căn cứ tính điểm quá trình.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* BẢNG ĐIỀU HÀNH HẠN NỘP BÀI TẬP — Typography to rõ, không màu mè rối mắt */}
       <section className="space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between border-b border-slate-200 pb-5 gap-4">
