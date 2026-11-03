@@ -1,0 +1,16 @@
+[
+  {
+    "id": "u-admin",
+    "name": "Lớp trưởng (Admin)",
+    "email": "admin@ptit.edu.vn",
+    "passwordHash": "$2b$10$uPkFQNAw2gf4S7x7PFtatOGWhiH7UUEZpIV3lQnRpU4yacgWVinEm",
+    "role": "admin"
+  },
+  {
+    "id": "u-sv",
+    "name": "Sinh viên PTIT",
+    "email": "sv@ptit.edu.vn",
+    "passwordHash": "$2b$10$3pN.LjqjDngPnVwfac6BQuJD3g.SNI5lCelcvVfo2Y7JVvqmYLrb6",
+    "role": "user"
+  }
+]

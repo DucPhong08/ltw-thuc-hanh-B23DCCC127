@@ -1,0 +1,122 @@
+[
+  {
+    "id": "1",
+    "title": "Nộp BTTH 3 — Class Deadline Hub",
+    "description": "Hoàn thiện mã nguồn Next.js với SSG/ISR/SSR, cấu hình NextAuth v5 Credentials, phân quyền ma trận can() và nộp kèm README giải trình.",
+    "subjectSlug": "ltwnc",
+    "subjectName": "Lập trình Web Nâng Cao",
+    "dueDate": "2026-11-08T23:59:00.000Z",
+    "priority": "high",
+    "createdAt": "2026-11-01T08:00:00.000Z"
+  },
+  {
+    "id": "2",
+    "title": "Bài tập lớn giữa kỳ: Xây dựng E-Commerce",
+    "description": "Thiết kế kiến trúc vertical-slice cho giỏ hàng, thanh toán trực tuyến và báo cáo phân tích hiệu năng Lighthouse.",
+    "subjectSlug": "ltwnc",
+    "subjectName": "Lập trình Web Nâng Cao",
+    "dueDate": "2026-11-20T23:59:00.000Z",
+    "priority": "high",
+    "createdAt": "2026-10-20T08:00:00.000Z"
+  },
+  {
+    "id": "3",
+    "title": "Quiz tuần 9 — Kỹ thuật SSR và ISR",
+    "description": "Làm bài trắc nghiệm 30 câu hỏi trực tuyến trên hệ thống QLĐT về cơ chế revalidation và Server Components.",
+    "subjectSlug": "ltwnc",
+    "subjectName": "Lập trình Web Nâng Cao",
+    "dueDate": "2026-11-05T20:00:00.000Z",
+    "priority": "medium",
+    "createdAt": "2026-11-02T09:00:00.000Z"
+  },
+  {
+    "id": "4",
+    "title": "Mô phỏng đường ống lệnh MIPS 5 tầng",
+    "description": "Sử dụng MARS simulator để chạy chương trình hợp ngữ, phát hiện Data Hazard và giải quyết bằng kỹ thuật Forwarding.",
+    "subjectSlug": "ktmt",
+    "subjectName": "Kiến trúc Máy tính",
+    "dueDate": "2026-11-12T23:59:00.000Z",
+    "priority": "high",
+    "createdAt": "2026-10-28T07:30:00.000Z"
+  },
+  {
+    "id": "5",
+    "title": "Báo cáo tối ưu phân cấp bộ nhớ Cache L1/L2",
+    "description": "Đo đạc tỷ lệ Cache Miss với ma trận lớn và áp dụng kỹ thuật Loop Tiling để tối ưu hóa truy xuất bộ nhớ.",
+    "subjectSlug": "ktmt",
+    "subjectName": "Kiến trúc Máy tính",
+    "dueDate": "2026-11-25T17:00:00.000Z",
+    "priority": "medium",
+    "createdAt": "2026-10-25T10:00:00.000Z"
+  },
+  {
+    "id": "6",
+    "title": "Bài tập thực hành hợp ngữ RISC-V cơ bản",
+    "description": "Viết chương trình hợp ngữ tính dãy số Fibonacci và đảo ngược chuỗi ký tự không sử dụng mảng phụ.",
+    "subjectSlug": "ktmt",
+    "subjectName": "Kiến trúc Máy tính",
+    "dueDate": "2026-10-30T23:59:00.000Z",
+    "priority": "low",
+    "createdAt": "2026-10-15T08:00:00.000Z"
+  },
+  {
+    "id": "7",
+    "title": "Lập trình Socket TCP Chat Server đa luồng",
+    "description": "Cài đặt ứng dụng chat console đa client kết nối một server dùng Socket C/C++ hoặc Java, xử lý bất đồng bộ.",
+    "subjectSlug": "mmt",
+    "subjectName": "Mạng Máy tính",
+    "dueDate": "2026-11-15T23:59:00.000Z",
+    "priority": "high",
+    "createdAt": "2026-10-29T14:00:00.000Z"
+  },
+  {
+    "id": "8",
+    "title": "Phân tích gói tin Wireshark bắt giao thức HTTP/DNS",
+    "description": "Bắt gói tin khi truy cập web trường, phân tích cấu trúc Header HTTP request/response và bản ghi DNS query.",
+    "subjectSlug": "mmt",
+    "subjectName": "Mạng Máy tính",
+    "dueDate": "2026-11-06T18:00:00.000Z",
+    "priority": "medium",
+    "createdAt": "2026-11-01T11:00:00.000Z"
+  },
+  {
+    "id": "9",
+    "title": "Thiết kế sơ đồ mạng VLAN trên Cisco Packet Tracer",
+    "description": "Cấu hình chia 3 VLAN cho các phòng ban, định tuyến Inter-VLAN Routing bằng Router-on-a-stick.",
+    "subjectSlug": "mmt",
+    "subjectName": "Mạng Máy tính",
+    "dueDate": "2026-11-28T23:59:00.000Z",
+    "priority": "low",
+    "createdAt": "2026-10-22T08:30:00.000Z"
+  },
+  {
+    "id": "10",
+    "title": "Thiết kế chuẩn hóa CSDL quản lý thư viện về dạng 3NF",
+    "description": "Từ biểu mẫu mượn trả sách thực tế, xác định các phụ thuộc hàm, chuẩn hóa từ 1NF lên 3NF và vẽ sơ đồ quan hệ.",
+    "subjectSlug": "csdl",
+    "subjectName": "Cơ sở Dữ liệu",
+    "dueDate": "2026-11-10T23:59:00.000Z",
+    "priority": "high",
+    "createdAt": "2026-10-27T09:00:00.000Z"
+  },
+  {
+    "id": "11",
+    "title": "Thực hành truy vấn SQL phức hợp và Window Functions",
+    "description": "Viết 15 câu truy vấn nâng cao có GROUP BY, HAVING, subquery, CTE và các hàm ROW_NUMBER(), RANK().",
+    "subjectSlug": "csdl",
+    "subjectName": "Cơ sở Dữ liệu",
+    "dueDate": "2026-11-18T23:59:00.000Z",
+    "priority": "medium",
+    "createdAt": "2026-10-31T15:00:00.000Z"
+  },
+  {
+    "id": "12",
+    "title": "Báo cáo phân tích Execution Plan & Indexing B-Tree",
+    "description": "Chạy lệnh EXPLAIN ANALYZE trên bảng 1 triệu dòng, so sánh hiệu năng Sequential Scan vs Index Scan sau khi tạo B-Tree Index.",
+    "subjectSlug": "csdl",
+    "subjectName": "Cơ sở Dữ liệu",
+    "dueDate": "2026-10-25T23:59:00.000Z",
+    "priority": "low",
+    "createdAt": "2026-10-10T10:00:00.000Z"
+  }
+]

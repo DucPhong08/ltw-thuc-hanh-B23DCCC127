@@ -1,0 +1,38 @@
+[
+  {
+    "slug": "ltwnc",
+    "code": "INT1434",
+    "name": "Lập trình Web Nâng Cao",
+    "credits": 3,
+    "description": "Nghiên cứu kiến trúc Next.js App Router, SSR/SSG/ISR, tối ưu Core Web Vitals, xác thực Auth.js và bảo mật API.",
+    "lecturer": "TS. Nguyễn Văn A",
+    "color": "indigo"
+  },
+  {
+    "slug": "ktmt",
+    "code": "INT1306",
+    "name": "Kiến trúc Máy tính",
+    "credits": 3,
+    "description": "Cấu trúc vi kiến trúc, tập lệnh MIPS/RISC-V, phân cấp bộ nhớ cache, kỹ thuật đường ống pipeline và xử lý ngắt.",
+    "lecturer": "ThS. Trần Thị B",
+    "color": "emerald"
+  },
+  {
+    "slug": "mmt",
+    "code": "INT1314",
+    "name": "Mạng Máy tính",
+    "credits": 3,
+    "description": "Mô hình kiến trúc OSI & TCP/IP, các giao thức tầng ứng dụng, định tuyến mạng IP, socket programming và an ninh mạng.",
+    "lecturer": "TS. Lê Hoàng C",
+    "color": "sky"
+  },
+  {
+    "slug": "csdl",
+    "code": "INT1339",
+    "name": "Cơ sở Dữ liệu",
+    "credits": 3,
+    "description": "Mô hình thực thể liên kết ERD, đại số quan hệ, chuẩn hóa dạng 3NF/BCNF, ngôn ngữ SQL nâng cao và tối ưu hóa truy vấn.",
+    "lecturer": "PGS.TS. Phạm Minh D",
+    "color": "amber"
+  }
+]
