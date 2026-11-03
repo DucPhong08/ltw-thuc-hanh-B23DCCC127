@@ -68,9 +68,9 @@ export function Countdown({ dueDate }: CountdownProps) {
 
   return (
     <span
-      className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 text-xs rounded-full border shadow-2xs ${badgeStyles[status]}`}
+      className={`inline-flex items-center gap-2 px-3 py-1 text-xs sm:text-sm font-semibold rounded-full border ${badgeStyles[status]}`}
     >
-      <span className={`w-1.5 h-1.5 rounded-full ${dotStyles[status]}`} />
+      <span className={`w-2 h-2 rounded-full ${dotStyles[status]}`} />
       <span>{text}</span>
     </span>
   );

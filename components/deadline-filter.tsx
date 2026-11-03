@@ -62,12 +62,12 @@ export function DeadlineFilter({
 
   const filtered = useMemo(() => {
     return initialDeadlines.filter((item) => {
-      // Quick tab filter (1Office style)
+      // Tab lọc nhanh
       if (quickTab === "high" && item.priority !== "high") return false;
       if (quickTab === "completed" && !completedSet.has(item.id)) return false;
       if (quickTab === "pending" && completedSet.has(item.id)) return false;
 
-      // Dropdown filters
+      // Lọc theo dropdown
       if (selectedSubject !== "all" && item.subjectSlug !== selectedSubject) {
         return false;
       }
@@ -101,11 +101,11 @@ export function DeadlineFilter({
 
   return (
     <div className="space-y-6">
-      {/* 1Office-Style Administrative Command Bar */}
-      <div className="bg-white rounded-3xl border border-slate-200/90 shadow-xs overflow-hidden">
-        {/* Top Tab Strip (Phong cách Tabs 1Office) */}
-        <div className="flex flex-wrap items-center justify-between gap-4 px-6 pt-4 pb-0 border-b border-slate-200/80 bg-slate-50/50">
-          <div className="flex items-center gap-1 sm:gap-2 overflow-x-auto text-xs sm:text-sm font-semibold">
+      {/* Bảng Điều Khiển Học Vụ — Màu sắc đồng nhất, phân cấp rõ ràng */}
+      <div className="bg-white rounded-3xl border border-slate-200 shadow-xs overflow-hidden">
+        {/* Thanh Tab Điều Phối Nhanh */}
+        <div className="flex flex-wrap items-center justify-between gap-4 px-6 pt-4 pb-0 border-b border-slate-200 bg-slate-50/60">
+          <div className="flex items-center gap-2 overflow-x-auto text-sm sm:text-base font-bold">
             <button
               type="button"
               onClick={() => {
@@ -120,9 +120,7 @@ export function DeadlineFilter({
               }`}
             >
               <span>Tất cả bài tập</span>
-              <span className={`px-2 py-0.5 rounded-full text-xs font-mono ${
-                quickTab === "all" ? "bg-red-100 text-red-800" : "bg-slate-200 text-slate-600"
-              }`}>
+              <span className="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-slate-200 text-slate-700">
                 {initialDeadlines.length}
               </span>
             </button>
@@ -139,13 +137,11 @@ export function DeadlineFilter({
                   : "border-transparent text-slate-600 hover:text-slate-900"
               }`}
             >
-              <svg className="w-3.5 h-3.5 text-rose-600" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="w-4 h-4 text-red-600" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 00-1 1v3a1 1 0 11-2 0V6z" clipRule="evenodd" />
               </svg>
               <span>Ưu tiên cao</span>
-              <span className={`px-2 py-0.5 rounded-full text-xs font-mono ${
-                quickTab === "high" ? "bg-rose-100 text-rose-800" : "bg-slate-200 text-slate-600"
-              }`}>
+              <span className="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-red-100 text-red-800">
                 {urgentTotal}
               </span>
             </button>
@@ -165,9 +161,7 @@ export function DeadlineFilter({
                   }`}
                 >
                   <span>Chưa nộp</span>
-                  <span className={`px-2 py-0.5 rounded-full text-xs font-mono ${
-                    quickTab === "pending" ? "bg-amber-100 text-amber-800" : "bg-slate-200 text-slate-600"
-                  }`}>
+                  <span className="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-slate-200 text-slate-700">
                     {pendingTotal}
                   </span>
                 </button>
@@ -185,9 +179,7 @@ export function DeadlineFilter({
                   }`}
                 >
                   <span>Đã hoàn thành</span>
-                  <span className={`px-2 py-0.5 rounded-full text-xs font-mono ${
-                    quickTab === "completed" ? "bg-emerald-100 text-emerald-800" : "bg-slate-200 text-slate-600"
-                  }`}>
+                  <span className="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-emerald-100 text-emerald-800">
                     {completedTotal}
                   </span>
                 </button>
@@ -195,32 +187,32 @@ export function DeadlineFilter({
             )}
           </div>
 
-          {/* Segmented View Mode Control (Bảng vs Thẻ) */}
-          <div className="inline-flex rounded-xl bg-slate-200/80 p-1 mb-2 text-xs font-semibold">
+          {/* Điều khiển chuyển đổi Chế độ xem */}
+          <div className="inline-flex rounded-xl bg-slate-200/90 p-1 mb-2 text-xs sm:text-sm font-semibold">
             <button
               type="button"
               onClick={() => setViewMode("table")}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all ${
+              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg transition-all ${
                 viewMode === "table"
                   ? "bg-white text-slate-900 shadow-2xs font-bold"
                   : "text-slate-600 hover:text-slate-900"
               }`}
             >
-              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
-              <span>Dạng Bảng (1Office)</span>
+              <span>Dạng Bảng</span>
             </button>
             <button
               type="button"
               onClick={() => setViewMode("list")}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all ${
+              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg transition-all ${
                 viewMode === "list"
                   ? "bg-white text-slate-900 shadow-2xs font-bold"
                   : "text-slate-600 hover:text-slate-900"
               }`}
             >
-              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
               </svg>
               <span>Dạng Thẻ</span>
@@ -228,10 +220,10 @@ export function DeadlineFilter({
           </div>
         </div>
 
-        {/* Inputs & Dropdowns Toolbar */}
-        <div className="p-5 sm:p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {/* Khung Bộ Lọc & Tìm Kiếm — Cỡ chữ to rõ, khoảng cách thoáng */}
+        <div className="p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           <div className="relative">
-            <label className="block text-xs font-bold text-slate-700 mb-1.5">
+            <label className="block text-sm font-bold text-slate-800 mb-2">
               Tìm theo tiêu đề / nội dung
             </label>
             <div className="relative">
@@ -245,74 +237,72 @@ export function DeadlineFilter({
                 placeholder="Nhập tên bài, mô tả…"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full text-sm h-11 pl-10 pr-3.5 bg-white border border-slate-200 rounded-xl outline-none focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10 transition-all text-slate-800 shadow-2xs"
+                className="w-full text-base h-12 pl-10 pr-4 bg-white border border-slate-300 rounded-xl outline-none focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10 transition-all text-slate-900 shadow-2xs"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-slate-700 mb-1.5">
-              Học phần chuyên ngành
+            <label className="block text-sm font-bold text-slate-800 mb-2">
+              Lọc theo học phần
             </label>
             <select
               value={selectedSubject}
               onChange={(e) => setSelectedSubject(e.target.value)}
-              className="w-full text-sm h-11 px-3.5 bg-white border border-slate-200 rounded-xl outline-none focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10 transition-all text-slate-800 shadow-2xs"
+              className="w-full text-base h-12 px-3.5 bg-white border border-slate-300 rounded-xl outline-none focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10 transition-all text-slate-900 shadow-2xs font-medium cursor-pointer"
             >
-              <option value="all">Tất cả môn ({subjects.length})</option>
-              {subjects.map((sub) => (
-                <option key={sub.slug} value={sub.slug}>
-                  {sub.name} [{sub.code}]
+              <option value="all">Tất cả môn học ({subjects.length})</option>
+              {subjects.map((s) => (
+                <option key={s.slug} value={s.slug}>
+                  {s.name} ({s.code})
                 </option>
               ))}
             </select>
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-slate-700 mb-1.5">
+            <label className="block text-sm font-bold text-slate-800 mb-2">
               Mức độ ưu tiên
             </label>
             <select
               value={selectedPriority}
               onChange={(e) => setSelectedPriority(e.target.value)}
-              className="w-full text-sm h-11 px-3.5 bg-white border border-slate-200 rounded-xl outline-none focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10 transition-all text-slate-800 shadow-2xs"
+              className="w-full text-base h-12 px-3.5 bg-white border border-slate-300 rounded-xl outline-none focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10 transition-all text-slate-900 shadow-2xs font-medium cursor-pointer"
             >
-              <option value="all">Mọi mức độ</option>
-              <option value="high">Ưu tiên cao (High)</option>
-              <option value="medium">Trung bình (Medium)</option>
-              <option value="low">Thấp (Low)</option>
+              <option value="all">Tất cả mức độ</option>
+              <option value="high">Ưu tiên cao (bắt buộc)</option>
+              <option value="medium">Mức độ thường</option>
+              <option value="low">Mức độ thấp</option>
             </select>
           </div>
 
-          {canMark && (
-            <div>
-              <label className="block text-xs font-bold text-slate-700 mb-1.5">
-                Trạng thái nghĩa vụ nộp
-              </label>
-              <select
-                value={selectedStatus}
-                onChange={(e) => setSelectedStatus(e.target.value)}
-                className="w-full text-sm h-11 px-3.5 bg-white border border-slate-200 rounded-xl outline-none focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10 transition-all text-slate-800 shadow-2xs"
-              >
-                <option value="all">Tất cả trạng thái</option>
-                <option value="pending">Chưa hoàn thành</option>
-                <option value="completed">Đã hoàn thành</option>
-              </select>
-            </div>
-          )}
+          <div>
+            <label className="block text-sm font-bold text-slate-800 mb-2">
+              Trạng thái nộp bài
+            </label>
+            <select
+              value={selectedStatus}
+              onChange={(e) => setSelectedStatus(e.target.value)}
+              className="w-full text-base h-12 px-3.5 bg-white border border-slate-300 rounded-xl outline-none focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10 transition-all text-slate-900 shadow-2xs font-medium cursor-pointer"
+            >
+              <option value="all">Tất cả trạng thái</option>
+              <option value="pending">Chưa hoàn thành</option>
+              <option value="completed">Đã nộp / Hoàn thành</option>
+            </select>
+          </div>
         </div>
       </div>
 
-      {/* Counter & Active Filter Bar */}
-      <div className="flex items-center justify-between text-xs sm:text-sm text-slate-500 px-1 font-medium">
+      {/* Thông tin kết quả tìm kiếm */}
+      <div className="flex items-center justify-between text-sm sm:text-base text-slate-600 px-2 font-medium">
         <span>
-          Đang hiển thị <strong className="text-slate-900 font-bold">{filtered.length}</strong> / {initialDeadlines.length} bài tập học vụ
+          Đang hiển thị <strong className="text-slate-900 font-bold">{filtered.length}</strong> / {initialDeadlines.length} bài tập
         </span>
         {(selectedSubject !== "all" ||
           selectedPriority !== "all" ||
           selectedStatus !== "all" ||
           quickTab !== "all" ||
-          searchQuery) && (
+          searchQuery.trim()) && (
           <button
             type="button"
             onClick={() => {
@@ -331,24 +321,24 @@ export function DeadlineFilter({
 
       {/* Render Danh sách */}
       {filtered.length === 0 ? (
-        <div className="bg-white rounded-3xl border border-slate-200/80 p-16 text-center text-slate-500 text-sm shadow-xs">
+        <div className="bg-white rounded-3xl border border-slate-200 p-16 text-center text-slate-600 text-base shadow-xs">
           Không tìm thấy bài tập nào phù hợp với điều kiện lọc hiện tại.
         </div>
       ) : viewMode === "table" ? (
-        /* 1OFFICE ADMINISTRATIVE DATA TABLE */
-        <div className="bg-white rounded-3xl border border-slate-200/90 shadow-xs overflow-hidden">
+        /* BẢNG DỮ LIỆU HỌC VỤ HÀNH CHÍNH — Cỡ chữ to, màu sắc nhã nhặn */
+        <div className="bg-white rounded-3xl border border-slate-200 shadow-xs overflow-hidden">
           <div className="overflow-x-auto">
-            <table className="w-full text-left text-sm">
-              <thead className="bg-slate-50 border-b border-slate-200 text-slate-600 font-bold uppercase text-xs tracking-wider">
+            <table className="w-full text-left text-base">
+              <thead className="bg-slate-50 border-b border-slate-200 text-slate-700 font-bold uppercase text-xs sm:text-sm tracking-wider">
                 <tr>
-                  <th className="py-4 px-4 w-12 text-center font-mono">#</th>
-                  <th className="py-4 px-3 w-28 text-center">Ưu tiên</th>
-                  <th className="py-4 px-5">Tên công việc & Bài tập</th>
-                  <th className="py-4 px-4 w-44">Học phần</th>
-                  <th className="py-4 px-5 w-48">Hạn chót quy định</th>
-                  <th className="py-4 px-4 w-40">Thời gian còn lại</th>
-                  <th className="py-4 px-4 w-36 text-center">Trạng thái</th>
-                  <th className="py-4 px-4 w-28 text-right">Chi tiết</th>
+                  <th className="py-4.5 px-5 w-14 text-center font-mono">#</th>
+                  <th className="py-4.5 px-4 w-32 text-center">Ưu tiên</th>
+                  <th className="py-4.5 px-6">Tên công việc & Bài tập</th>
+                  <th className="py-4.5 px-5 w-52">Học phần</th>
+                  <th className="py-4.5 px-6 w-52">Hạn chót quy định</th>
+                  <th className="py-4.5 px-5 w-44">Thời gian còn lại</th>
+                  <th className="py-4.5 px-5 w-40 text-center">Trạng thái</th>
+                  <th className="py-4.5 px-5 w-32 text-right">Chi tiết</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
@@ -360,33 +350,33 @@ export function DeadlineFilter({
                   return (
                     <tr
                       key={item.id}
-                      className={`hover:bg-slate-50/90 transition-colors ${
+                      className={`hover:bg-slate-50/80 transition-colors ${
                         isCompleted ? "bg-emerald-50/20" : ""
                       }`}
                     >
-                      <td className="py-4.5 px-4 text-center font-mono text-slate-400">
+                      <td className="py-5 px-5 text-center font-mono text-sm font-bold text-slate-400">
                         {index + 1}
                       </td>
 
-                      {/* 1Office Priority Flag Icon */}
-                      <td className="py-4.5 px-3 text-center whitespace-nowrap">
+                      {/* Mức độ ưu tiên — Cờ chuẩn mực */}
+                      <td className="py-5 px-4 text-center whitespace-nowrap">
                         {item.priority === "high" ? (
-                          <span className="inline-flex items-center gap-1 text-xs font-bold text-rose-700 bg-rose-50 border border-rose-200/70 px-2 py-0.5 rounded-md">
-                            <svg className="w-3.5 h-3.5 text-rose-600" fill="currentColor" viewBox="0 0 20 20">
+                          <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-red-700 bg-red-50 border border-red-200 px-3 py-1 rounded-lg">
+                            <svg className="w-4 h-4 text-red-600" fill="currentColor" viewBox="0 0 20 20">
                               <path fillRule="evenodd" d="M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 00-1 1v3a1 1 0 11-2 0V6z" clipRule="evenodd" />
                             </svg>
                             <span>Cao</span>
                           </span>
                         ) : item.priority === "medium" ? (
-                          <span className="inline-flex items-center gap-1 text-xs font-semibold text-amber-700 bg-amber-50 border border-amber-200/70 px-2 py-0.5 rounded-md">
-                            <svg className="w-3.5 h-3.5 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
+                          <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-slate-700 bg-slate-100 border border-slate-200 px-3 py-1 rounded-lg">
+                            <svg className="w-4 h-4 text-slate-500" fill="currentColor" viewBox="0 0 20 20">
                               <path fillRule="evenodd" d="M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 00-1 1v3a1 1 0 11-2 0V6z" clipRule="evenodd" />
                             </svg>
                             <span>Thường</span>
                           </span>
                         ) : (
-                          <span className="inline-flex items-center gap-1 text-xs font-medium text-slate-600 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded-md">
-                            <svg className="w-3.5 h-3.5 text-slate-400" fill="currentColor" viewBox="0 0 20 20">
+                          <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-slate-600 bg-slate-50 border border-slate-200 px-3 py-1 rounded-lg">
+                            <svg className="w-4 h-4 text-slate-400" fill="currentColor" viewBox="0 0 20 20">
                               <path fillRule="evenodd" d="M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 00-1 1v3a1 1 0 11-2 0V6z" clipRule="evenodd" />
                             </svg>
                             <span>Thấp</span>
@@ -394,35 +384,35 @@ export function DeadlineFilter({
                         )}
                       </td>
 
-                      {/* Tên công việc & Chi tiết */}
-                      <td className="py-4.5 px-5">
+                      {/* Tiêu đề & Mô tả */}
+                      <td className="py-5 px-6">
                         <Link
                           href={`/deadlines/${item.id}`}
-                          className="font-bold text-slate-900 hover:text-red-700 transition-colors block text-sm leading-snug"
+                          className="font-bold text-slate-900 hover:text-red-700 transition-colors block text-base sm:text-lg leading-snug"
                         >
                           {item.title}
                         </Link>
-                        <p className="text-slate-500 text-xs line-clamp-1 mt-1">
+                        <p className="text-sm text-slate-600 line-clamp-1 mt-1">
                           {item.description}
                         </p>
                       </td>
 
                       {/* Học phần */}
-                      <td className="py-4.5 px-4 whitespace-nowrap">
-                        <span className="font-bold text-slate-900 block text-xs">
+                      <td className="py-5 px-5 whitespace-nowrap">
+                        <span className="font-bold text-slate-900 block text-sm sm:text-base">
                           {item.subjectName}
                         </span>
-                        <span className="text-[11px] font-mono text-slate-500">
+                        <span className="text-xs font-mono font-bold text-slate-500 mt-0.5 block">
                           {item.subjectSlug.toUpperCase()}
                         </span>
                       </td>
 
                       {/* Hạn chót */}
-                      <td className="py-4.5 px-5 whitespace-nowrap text-slate-700">
-                        <span className="font-semibold block text-xs">
+                      <td className="py-5 px-6 whitespace-nowrap text-slate-800">
+                        <span className="font-bold block text-sm sm:text-base">
                           {new Date(item.dueDate).toLocaleDateString("vi-VN")}
                         </span>
-                        <span className="text-[11px] text-slate-400 font-mono">
+                        <span className="text-xs sm:text-sm text-slate-500 font-mono mt-0.5 block">
                           {new Date(item.dueDate).toLocaleTimeString("vi-VN", {
                             hour: "2-digit",
                             minute: "2-digit",
@@ -431,12 +421,12 @@ export function DeadlineFilter({
                       </td>
 
                       {/* Thời gian còn lại */}
-                      <td className="py-4.5 px-4 whitespace-nowrap">
+                      <td className="py-5 px-5 whitespace-nowrap">
                         <Countdown dueDate={item.dueDate} />
                       </td>
 
-                      {/* 1Office Status Pill */}
-                      <td className="py-4.5 px-4 text-center whitespace-nowrap">
+                      {/* Trạng thái / Nút đánh dấu */}
+                      <td className="py-5 px-5 text-center whitespace-nowrap">
                         {canMark ? (
                           <CompleteToggle
                             deadlineId={item.id}
@@ -444,25 +434,25 @@ export function DeadlineFilter({
                             canMark={canMark}
                           />
                         ) : isCompleted ? (
-                          <span className="inline-flex items-center gap-1 text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200/70 px-2.5 py-0.5 rounded-full">
+                          <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 px-3.5 py-1 rounded-full">
                             ● Đã hoàn thành
                           </span>
                         ) : isOverdue ? (
-                          <span className="inline-flex items-center gap-1 text-xs font-bold text-rose-700 bg-rose-50 border border-rose-200/70 px-2.5 py-0.5 rounded-full">
+                          <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-red-800 bg-red-50 border border-red-200 px-3.5 py-1 rounded-full">
                             ● Quá hạn nộp
                           </span>
                         ) : (
-                          <span className="inline-flex items-center gap-1 text-xs font-bold text-blue-700 bg-blue-50 border border-blue-200/70 px-2.5 py-0.5 rounded-full">
+                          <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-slate-700 bg-slate-100 border border-slate-200 px-3.5 py-1 rounded-full">
                             ● Đang thực hiện
                           </span>
                         )}
                       </td>
 
                       {/* Thao tác */}
-                      <td className="py-4.5 px-4 text-right whitespace-nowrap">
+                      <td className="py-5 px-5 text-right whitespace-nowrap">
                         <Link
                           href={`/deadlines/${item.id}`}
-                          className="font-bold text-slate-700 hover:text-red-700 text-xs transition-colors inline-flex items-center gap-1"
+                          className="font-bold text-red-700 hover:text-red-800 text-sm sm:text-base transition-colors inline-flex items-center gap-1.5"
                         >
                           <span>Hồ sơ</span>
                           <span>&rarr;</span>
@@ -476,7 +466,7 @@ export function DeadlineFilter({
           </div>
         </div>
       ) : (
-        /* CARD VIEW HIỆN ĐẠI */
+        /* DẠNG THẺ — Thoáng, chữ to rõ */
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {filtered.map((item) => {
             const isCompleted = completedSet.has(item.id);
@@ -486,20 +476,26 @@ export function DeadlineFilter({
                 className={`bg-white rounded-3xl border p-7 sm:p-8 flex flex-col justify-between transition-all duration-200 shadow-xs hover:shadow-xl hover:-translate-y-1 ${
                   isCompleted
                     ? "border-emerald-300 bg-emerald-50/20"
-                    : "border-slate-200/80 hover:border-slate-300"
+                    : "border-slate-200 hover:border-slate-300"
                 }`}
               >
-                <div>
-                  <div className="flex items-center justify-between text-xs sm:text-sm mb-4">
-                    <span className="font-semibold text-slate-700 bg-slate-100 px-3 py-1 rounded-lg border border-slate-200/60">
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono text-xs sm:text-sm font-bold text-slate-800 bg-slate-100 px-3 py-1 rounded-lg border border-slate-200">
                       {item.subjectName}
                     </span>
-                    <span className="text-xs uppercase font-extrabold text-slate-500 bg-slate-100 px-2.5 py-0.5 rounded-md">
-                      {item.priority}
+                    <span
+                      className={`text-xs sm:text-sm font-bold px-2.5 py-0.5 rounded-md border ${
+                        item.priority === "high"
+                          ? "bg-red-50 text-red-700 border-red-200"
+                          : "bg-slate-100 text-slate-700 border-slate-200"
+                      }`}
+                    >
+                      {item.priority === "high" ? "Ưu tiên cao" : "Thường"}
                     </span>
                   </div>
 
-                  <h3 className="font-bold text-slate-900 text-lg mb-2 leading-snug">
+                  <h3 className="font-black text-slate-900 text-xl leading-snug">
                     <Link
                       href={`/deadlines/${item.id}`}
                       className="hover:text-red-700 transition-colors"
@@ -508,15 +504,15 @@ export function DeadlineFilter({
                     </Link>
                   </h3>
 
-                  <p className="text-sm text-slate-600 line-clamp-3 mb-6 leading-relaxed">
+                  <p className="text-base text-slate-600 line-clamp-3 leading-relaxed">
                     {item.description}
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-slate-100 flex flex-col gap-3">
-                  <div className="flex items-center justify-between text-xs sm:text-sm text-slate-500">
+                <div className="pt-5 mt-4 border-t border-slate-100 flex flex-col gap-3.5">
+                  <div className="flex items-center justify-between text-sm text-slate-600">
                     <Countdown dueDate={item.dueDate} />
-                    <span className="font-mono text-xs">
+                    <span className="font-mono text-sm font-bold text-slate-700">
                       {new Date(item.dueDate).toLocaleDateString("vi-VN")}
                     </span>
                   </div>
@@ -529,9 +525,10 @@ export function DeadlineFilter({
                     />
                     <Link
                       href={`/deadlines/${item.id}`}
-                      className="text-sm font-bold text-slate-700 hover:text-red-700 transition-colors"
+                      className="text-base font-bold text-red-700 hover:text-red-800 transition-colors inline-flex items-center gap-1"
                     >
-                      Chi tiết &rarr;
+                      <span>Chi tiết</span>
+                      <span>&rarr;</span>
                     </Link>
                   </div>
                 </div>
