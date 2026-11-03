@@ -13,16 +13,32 @@ interface DeadlineFilterProps {
   canMark?: boolean;
 }
 
+let cachedTime = 0;
+const timeListeners = new Set<() => void>();
+
+if (typeof window !== "undefined") {
+  cachedTime = Date.now();
+  setInterval(() => {
+    cachedTime = Date.now();
+    timeListeners.forEach((fn) => fn());
+  }, 60000);
+}
+
 function subscribeTime(callback: () => void) {
-  const interval = setInterval(callback, 60000);
-  return () => clearInterval(interval);
+  timeListeners.add(callback);
+  return () => {
+    timeListeners.delete(callback);
+  };
 }
 
-function getTimeSnapshot() {
-  return Date.now();
+function getTimeSnapshot(): number {
+  if (cachedTime === 0 && typeof window !== "undefined") {
+    cachedTime = Date.now();
+  }
+  return cachedTime;
 }
 
-function getServerTimeSnapshot() {
+function getServerTimeSnapshot(): number {
   return 0;
 }
 
