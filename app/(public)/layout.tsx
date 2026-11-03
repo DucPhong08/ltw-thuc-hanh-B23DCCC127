@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Suspense } from "react";
 import { UserMenu } from "@/components/user-menu";
+import { PortalFooter } from "@/components/portal-footer";
 
 export default function PublicLayout({
   children,
@@ -123,50 +124,8 @@ export default function PublicLayout({
         {children}
       </main>
 
-      {/* Modern Administrative Footer */}
-      <footer className="bg-white border-t border-slate-200/80 py-10 mt-auto">
-        <div className="max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-slate-500">
-          <div className="flex items-center gap-3">
-            <div className="relative h-6 w-5 shrink-0">
-              <Image
-                src="/logo.png"
-                alt="Logo PTIT"
-                width={20}
-                height={26}
-                className="h-6 w-auto object-contain"
-              />
-            </div>
-            <span className="font-bold text-slate-800">PTIT Deadline Hub</span>
-            <span>•</span>
-            <span>Học viện Công nghệ Bưu chính Viễn thông</span>
-            <span>•</span>
-            <span className="font-mono text-slate-400">
-              Năm học 2026 – 2027
-            </span>
-          </div>
-
-          <div className="flex items-center gap-6 text-xs sm:text-sm font-semibold">
-            <Link
-              href="/deadlines"
-              className="hover:text-slate-900 transition-colors"
-            >
-              Sổ Deadline (12)
-            </Link>
-            <Link
-              href="/dashboard"
-              className="hover:text-slate-900 transition-colors"
-            >
-              Tiến độ cá nhân
-            </Link>
-            <Link
-              href="/login"
-              className="hover:text-slate-900 transition-colors"
-            >
-              Đăng nhập sinh viên
-            </Link>
-          </div>
-        </div>
-      </footer>
+      {/* Chuẩn Thể Thức Footer Hành Chính */}
+      <PortalFooter />
     </div>
   );
 }

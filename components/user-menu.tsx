@@ -9,11 +9,11 @@ export async function UserMenu() {
     return (
       <Link
         href="/login"
-        className="inline-flex items-center gap-2 px-4 py-2 bg-slate-900 hover:bg-black text-white text-xs font-semibold rounded-xl shadow-sm hover:shadow active:scale-[0.98] transition-all"
+        className="inline-flex items-center gap-2.5 px-6 py-2.5 sm:px-7 sm:py-3 bg-slate-900 hover:bg-slate-800 text-white text-sm sm:text-base font-bold rounded-2xl shadow-xs hover:shadow active:scale-[0.98] transition-all"
       >
         <span>Đăng nhập</span>
         <svg
-          className="w-3.5 h-3.5 text-slate-400"
+          className="w-4 h-4 text-slate-300"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -21,7 +21,7 @@ export async function UserMenu() {
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
-            strokeWidth={2}
+            strokeWidth={2.2}
             d="M14 5l7 7m0 0l-7 7m7-7H3"
           />
         </svg>
@@ -32,16 +32,16 @@ export async function UserMenu() {
   const roleLabel = user.role === "admin" ? "Ban cán sự" : "Sinh viên";
 
   return (
-    <div className="flex items-center gap-2.5 text-xs">
+    <div className="flex items-center gap-3 text-sm">
       <div className="text-right hidden sm:block">
         <div className="font-bold text-slate-900 leading-tight">
           {user.name || user.email}
         </div>
         <span
-          className={`inline-block text-[10px] font-semibold uppercase px-2 py-0.5 rounded-full border ${
+          className={`inline-block text-xs font-bold uppercase px-2.5 py-0.5 rounded-full border mt-0.5 ${
             user.role === "admin"
-              ? "bg-rose-50 text-rose-700 border-rose-200"
-              : "bg-indigo-50 text-indigo-700 border-indigo-200"
+              ? "bg-red-50 text-red-700 border-red-200"
+              : "bg-slate-100 text-slate-700 border-slate-200"
           }`}
         >
           {roleLabel}
@@ -50,7 +50,7 @@ export async function UserMenu() {
 
       <Link
         href="/dashboard"
-        className="px-3 py-1.5 text-xs font-semibold rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 transition-colors"
+        className="px-4 py-2.5 text-sm font-bold rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-900 transition-colors"
       >
         Dashboard
       </Link>
@@ -58,7 +58,7 @@ export async function UserMenu() {
       {user.role === "admin" && (
         <Link
           href="/admin"
-          className="px-3 py-1.5 text-xs font-semibold rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200/80 transition-colors hidden sm:inline-block"
+          className="px-4 py-2.5 text-sm font-bold rounded-xl bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 transition-colors hidden sm:inline-block"
         >
           Quản trị vụ
         </Link>
@@ -72,7 +72,7 @@ export async function UserMenu() {
       >
         <button
           type="submit"
-          className="px-3 py-1.5 text-xs font-semibold rounded-xl bg-white hover:bg-slate-100 text-slate-600 border border-slate-200 transition-colors"
+          className="px-4 py-2.5 text-sm font-bold rounded-xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 shadow-2xs transition-colors cursor-pointer"
         >
           Đăng xuất
         </button>

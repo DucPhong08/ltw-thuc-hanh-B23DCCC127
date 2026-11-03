@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import { auth, signOut } from "@/auth";
+import { PortalFooter } from "@/components/portal-footer";
 
 export default async function AppGroupLayout({
   children,
@@ -111,7 +112,7 @@ export default async function AppGroupLayout({
             >
               <button
                 type="submit"
-                className="text-xs sm:text-sm px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 font-semibold transition-all shadow-2xs cursor-pointer"
+                className="text-sm sm:text-base font-bold px-5 py-2.5 rounded-xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 shadow-2xs transition-all cursor-pointer"
               >
                 Đăng xuất
               </button>
@@ -121,9 +122,12 @@ export default async function AppGroupLayout({
       </header>
 
       {/* Main Expansive Container */}
-      <div className="flex-1 max-w-[1600px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 py-8 sm:py-12">
+      <main className="flex-1 max-w-[1600px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 py-8 sm:py-12">
         {children}
-      </div>
+      </main>
+
+      {/* Chuẩn Thể Thức Footer Hành Chính */}
+      <PortalFooter />
     </div>
   );
 }
